@@ -1,0 +1,103 @@
+    {% extends 'base.html' %}
+    {% block head %}
+
+    {% endblock %}
+
+    {% block body %}
+
+    <form method="POST" action="/rate">
+        <div class="container">
+
+
+            <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+                <h1 class="display-4 fst-italic">معلومات السياره</h1>
+                <div class="col-lg-6 px-0">
+
+                    <select class="form-select" name="brand" id="brand" aria-label="Default select example">
+                        <option selected>اختر الشركه</option>
+                        {% for Brand in car_brand["company_name"] %}
+                            <option value="{{ Brand }}">{{ Brand}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select class="form-select" name="car_model" id="car_model" aria-label="Default select example">
+                        <option selected>اختر الموديل</option>
+        </select>
+        <script>
+            console.log("JavaScript code is running!");
+            document.getElementById('brand').addEventListener('change', function () {
+                var brand = this.value;
+                var carModelDropdown = document.getElementById('car_model');
+                carModelDropdown.innerHTML = '<option selected>اختر الموديل</option>';
+        
+                fetch('/get_models/' + brand)
+                    .then(response => response.json())
+                    .then(models => {
+                        models.forEach(model => {
+                            model.forEach(element => {
+                                var option = document.createElement('option');
+                                option.value = element;
+                                option.textContent = element;
+                                carModelDropdown.appendChild(option);
+                            });
+                        });
+                    })
+            });
+        </script>
+        
+                    <select class="form-select" name="gear" aria-label="Default select example">
+                        <option selected>مغير السرعات</option>
+                        <option value="اوتوماتيك">اوتوماتيك</option>
+                        <option value="عادي">عادي</option>
+                    </select>
+                    
+
+    <select class="form-select" name="fule" aria-label="Default select example">
+        <option selected>نوع الوقود</option>
+        <option value="بنزين">بنزين</option>
+        <option value="ديزل">ديزل</option>
+    </select>
+
+    <select class="form-select" name="car_id" aria-label="Default select example">
+        <option selected>ترخيص السياره</option>
+        <option value="خصوصي">خصوصي</option>
+        <option value="عمومي">عمومي</option>
+    </select>
+
+    <input class="form-control" type="number" name="kiloage" placeholder="عداد السياره">
+
+    <input class="form-control" type="number" name="year" placeholder="موديل سنه">
+
+    <input class="form-control" type="number" name="NOP" placeholder="عدد الركاب">
+
+    <input class="form-control" type="number" name="engine_power" placeholder=" قوه الماتور">
+
+    <select class="form-select" name="pay_method" aria-label="Default select example">
+        <option selected>طريقه لبدفع</option>
+        <option value="نقدا فقط">كاش</option>
+        <option value="إمكانية التقسيط">تقسيط</option>
+    </select>
+
+    <h3 class="display-7 fst-italic">اضافات</h3>
+
+    <select class="form-select" name="sunrof" aria-label="Default select example">
+        <option selected>فتحة سقف</option>
+        <option value=1>يوجد</option>
+        <option value=0>لايوجد</option>
+    </select>
+
+
+                    <input class="btn btn-secondary" type="submit">
+                
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h2>Prediction Result: {{ predict }}</h2>
+                    </div>
+            </div>
+            </div>
+            
+
+    </form>
+
+    {% endblock %}
