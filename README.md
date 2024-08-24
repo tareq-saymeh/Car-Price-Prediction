@@ -16,32 +16,7 @@ This project focuses on predicting car prices based on data extracted from over 
 - **Machine Learning Models**: The notebook contains model training and evaluation to select the best performing model.
 - **Flask Web App**: A simple Flask app that serves the model to users, allowing them to input car details and receive a price prediction.
 
-## Installation
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/tareq-saymeh/Car-Price-Prediction.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd Car-Price-Prediction
-    ```
-3. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Run the data extraction script (if needed):
-    ```bash
-    python extract_data.py
-    ```
-5. Explore the data and train models in the Jupyter Notebook:
-    ```bash
-    jupyter notebook test.ipynb
-    ```
-6. Run the Flask app to start the web interface:
-    ```bash
-    python app.py
-    ```
 
 ## Usage
 After running the Flask app, you can access the web interface at `http://localhost:5000/` . Input the car features like brand, model, year, and mileage, and the app will return an estimated price based on the trained model.
